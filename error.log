@@ -1,0 +1,217 @@
+2023-02-25 23:07:24,567 INFO: errors [in app.py:409]
+2023-02-25 23:07:31,251 ERROR: Exception on /venues/create [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 169, in create_venue_form
+    form = VenueForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\csrf\core.py", line 44, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 33, in generate_csrf
+    secret_key = _get_config(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
+2023-02-25 23:07:51,618 ERROR: Exception on /artists/6/edit [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 287, in edit_artist
+    form = ArtistForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\csrf\core.py", line 44, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 33, in generate_csrf
+    secret_key = _get_config(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
+2023-02-25 23:08:23,453 ERROR: Exception on /venues/create [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 169, in create_venue_form
+    form = VenueForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\csrf\core.py", line 44, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 33, in generate_csrf
+    secret_key = _get_config(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
+2023-02-25 23:08:31,465 ERROR: Exception on /artists/create [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 333, in create_artist_form
+    form = ArtistForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\csrf\core.py", line 44, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 33, in generate_csrf
+    secret_key = _get_config(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
+2023-02-25 23:08:36,083 ERROR: Exception on /shows/create [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 384, in create_shows
+    form = ShowForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 280, in __init__
+    super().__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 48, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\meta.py", line 28, in bind_field
+    return unbound_field.bind(form=form, **options)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 395, in bind
+    return self.field_class(*self.args, **kw)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\datetime.py", line 29, in __init__
+    super().__init__(label, validators, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'efault'
+2023-02-25 23:11:01,406 INFO: errors [in app.py:409]
+2023-02-25 23:11:06,249 ERROR: Exception on /venues/create [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 169, in create_venue_form
+    form = VenueForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\csrf\core.py", line 44, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 33, in generate_csrf
+    secret_key = _get_config(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
+2023-02-25 23:11:34,328 ERROR: Exception on /venues/create [GET] [in C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py:1449]
+Traceback (most recent call last):
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 169, in create_venue_form
+    form = VenueForm()
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 208, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 286, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 127, in process
+    field.process(formdata, data, extra_filters=field_extra_filters)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\csrf\core.py", line 44, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 33, in generate_csrf
+    secret_key = _get_config(
+  File "C:\Users\TUANTKD\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
