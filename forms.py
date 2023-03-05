@@ -108,7 +108,7 @@ class VenueForm(Form):
     genres = SelectMultipleField('genres', validators=[DataRequired()], choices=genres_choices)
     facebook_link = StringField('facebook_link', validators=[URL()])
     website_link = StringField('website_link')
-    seeking_talent = BooleanField('seeking_talent')
+    seeking_talent = BooleanField('seeking_talent', default=False)
     seeking_description = StringField('seeking_description')
 
 
@@ -122,6 +122,6 @@ class ArtistForm(Form):
     genres = SelectMultipleField('genres', validators=[DataRequired()], choices=genres_choices)
     facebook_link = StringField('facebook_link', validators=[URL()])
     website_link = StringField('website_link')
-    seeking_venue = BooleanField( 'seeking_venue' )
+    seeking_venue = BooleanField('seeking_venue', default=False)
     seeking_description = StringField('seeking_description')
 
