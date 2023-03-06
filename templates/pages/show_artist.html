@@ -63,8 +63,8 @@
 		{%for show in artist.upcoming_shows %}
 		<div class="col-sm-4">
 			<div class="tile tile-show">
-				<img src="{{ show.image_link }}" alt=""/>
-				<h5><a href="/venues/{{ show.id }}">{{ show.name }}</a></h5>
+				<img src="{{ show.venue_image_link }}" alt=""/>
+				<h5><a href="/venues/{{ show.venue_id }}">{{ show.venue_name }}</a></h5>
 				<h6>{{ show.created_on }}</h6>
 			</div>
 		</div>
@@ -82,8 +82,8 @@
 		{%for show in artist.past_shows %}
 		<div class="col-sm-4">
 			<div class="tile tile-show">
-				<img src="{{ show.image_link }}" alt="" />
-				<h5><a href="/venues/{{ show.id }}">{{ show.name }}</a></h5>
+				<img src="{{ show.venue_image_link }}" alt="" />
+				<h5><a href="/venues/{{ show.venue_id }}">{{ show.venue_name }}</a></h5>
 				<h6>{{ show.created_on }}</h6>
 			</div>
 		</div>
