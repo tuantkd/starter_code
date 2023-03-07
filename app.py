@@ -398,27 +398,38 @@ def create_shows():
 
 @app.route('/shows/create', methods=['POST'])
 def create_show_submission():
-  try: 
+  form = ShowForm(request.form, meta={"csrf": False})
+  if form.validate():
+    try: 
+      show = Shows(
+        artist_id = form.artist_id.data,
+        venue_id = form.venue_id.data,
+        start_time = form.start_time.data
+      )
+      check_show = Shows.query.filter(db.and_(Shows.artist_id == form['artist_id'].data, Shows.venue_id == form['venue_id'].data)).first()
+      if check_show:
+        flash(u'Show existed! Please try again', 'error')
+        return render_template('forms/new_show.html', form=form)
+      else:
+        db.session.add(show)
+        db.session.commit()
+        flash('Show successfully listed!')
+        return render_template('pages/home.html')
+    except Exception as e:
+        db.session.rollback()
+        print(e)
+    finally:
+        db.session.close()
+  
+  else:
+
+    message = []
+    for field, errors in form.errors.items():
+      for error in errors:
+        message.append(f"{field}: {error}")
+    flash('Please fix the following errors: ' + ', '.join(message))
     form = ShowForm()
-    show = Shows(
-      artist_id = form['artist_id'].data,
-      venue_id = form['venue_id'].data,
-      start_time = form['start_time'].data)
-    
-    check_show = Shows.query.filter(db.and_(Shows.artist_id == form['artist_id'].data, Shows.venue_id == form['venue_id'].data)).first()
-    if check_show:
-      flash(u'Show existed! Please try again', 'error')
-      return render_template('forms/new_show.html', form=form)
-    else:
-      db.session.add(show)
-      db.session.commit()
-      flash('Show successfully listed!')
-      return render_template('pages/home.html')
-  except Exception as e:
-      db.session.rollback()
-      print(e)
-  finally:
-      db.session.close()
+    return render_template('forms/new_show.html', form=form)
 #==============================================================
 
 
