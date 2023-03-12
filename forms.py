@@ -5,10 +5,13 @@ from wtforms import (
     SelectField, 
     SelectMultipleField, 
     DateTimeField, 
-    BooleanField
+    BooleanField,
+    TextAreaField
 )
 from wtforms.validators import DataRequired, URL
 import re
+
+from models import Shows
 
 state_choices = [
     ('AL', 'AL'),
@@ -132,7 +135,7 @@ class VenueForm(Form):
     facebook_link = StringField('facebook_link', validators=[URL()])
     website_link = StringField('website_link')
     seeking_talent = BooleanField('seeking_talent', default=False)
-    seeking_description = StringField('seeking_description')
+    seeking_description = TextAreaField('seeking_description')
 
 
 
@@ -146,5 +149,5 @@ class ArtistForm(Form):
     facebook_link = StringField('facebook_link', validators=[URL()])
     website_link = StringField('website_link')
     seeking_venue = BooleanField('seeking_venue', default=False)
-    seeking_description = StringField('seeking_description')
+    seeking_description = TextAreaField('seeking_description')
 

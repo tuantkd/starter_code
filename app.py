@@ -1,3 +1,4 @@
+from distutils.util import strtobool
 import select
 import sys
 import json
@@ -10,7 +11,6 @@ from flask import (
     request,
     flash, 
     redirect,
-    session, 
     url_for
 )
 from flask_migrate import Migrate
@@ -27,15 +27,8 @@ from models import *
 app = Flask(__name__)
 moment = Moment(app)
 app.config.from_object('config')
-#db = SQLAlchemy(app)
 db.init_app(app)
 migrate = Migrate(app, db)
-#==============================================================
-
-
-#==============================================================
-# Object
-
 #==============================================================
 
 
@@ -95,7 +88,6 @@ def search_venues():
 @app.route('/venues/<int:venue_id>')
 def show_venue(venue_id):
   venue = Venue.query.get_or_404(venue_id)
-  venue.genres  = json.loads(venue.genres)
 
   past_shows = []
   upcoming_shows = []
@@ -136,7 +128,7 @@ def create_venue_submission():
         state = form.state.data,
         phone = form.phone.data,
         address = form.address.data,
-        genres = json.dumps(form.genres.data),
+        genres = form.genres.data,
         image_link = form.image_link.data,
         facebook_link = form.facebook_link.data,
         website_link = form.website_link.data,
@@ -170,18 +162,18 @@ def delete_venue(venue_id):
 
 @app.route('/venues/<int:venue_id>/edit', methods=['GET'])
 def edit_venue(venue_id):
-  venue_data = Venue.query.filter_by(id=venue_id).first()
+  venue_data = Venue.query.get_or_404(venue_id)
   form = VenueForm()
   form.name.data = venue_data.name
   form.city.data = venue_data.city
   form.state.data = venue_data.state
   form.address.data = venue_data.address
   form.phone.data = venue_data.phone
-  form.genres.data = json.loads(venue_data.genres)
+  form.genres.data = venue_data.genres
   form.image_link.data = venue_data.image_link
   form.website_link.data = venue_data.website_link
   form.facebook_link.data = venue_data.facebook_link
-  form.seeking_talent.data = json.loads(venue_data.seeking_talent.lower()),
+  form.seeking_talent.data = venue_data.seeking_talent,
   form.seeking_description.data = venue_data.seeking_description
   return render_template('forms/edit_venue.html', form=form, venue=venue_data)
 
@@ -191,16 +183,16 @@ def edit_venue_submission(venue_id):
   form = VenueForm(request.form, meta={'csrf': False})
   if form.validate():
     try:
-      venue.name = form.name.data,
-      venue.city = form.city.data,
-      venue.state = form.state.data,
-      venue.address = form.address.data,
-      venue.phone = form.phone.data,
-      venue.genres = json.dumps(form.genres.data),
-      venue.image_link = form.image_link.data,
-      venue.website_link = form.website_link.data,
-      venue.facebook_link = form.facebook_link.data,
-      venue.seeking_talent = json.dumps(form.seeking_talent.data),
+      venue.name = form.name.data
+      venue.city = form.city.data
+      venue.state = form.state.data
+      venue.address = form.address.data
+      venue.phone = form.phone.data
+      venue.genres = form.genres.data
+      venue.image_link = form.image_link.data
+      venue.website_link = form.website_link.data
+      venue.facebook_link = form.facebook_link.data
+      venue.seeking_talent = form.seeking_talent.data
       venue.seeking_description = form.seeking_description.data
       db.session.add(venue)
       db.session.commit()
@@ -255,7 +247,7 @@ def search_artists():
 @app.route('/artists/<int:artist_id>')
 def show_artist(artist_id):
   artist = Artist.query.get_or_404(artist_id)
-  artist.genres  = json.loads(artist.genres)
+
   past_shows = []
   upcoming_shows = []
   for show in artist.shows:
@@ -285,11 +277,11 @@ def edit_artist(artist_id):
   form.city.data = artist_data.city
   form.state.data = artist_data.state
   form.phone.data = artist_data.phone
-  form.genres.data = json.loads(artist_data.genres)
+  form.genres.data = artist_data.genres
   form.image_link.data = artist_data.image_link
   form.website_link.data = artist_data.website_link
   form.facebook_link.data = artist_data.facebook_link
-  form.seeking_venue.data = json.loads(artist_data.seeking_venue.lower()),
+  form.seeking_venue.data = artist_data.seeking_venue,
   form.seeking_description.data = artist_data.seeking_description
   return render_template('forms/edit_artist.html', form=form, artist=artist_data)
 
@@ -299,15 +291,15 @@ def edit_artist_submission(artist_id):
   form = ArtistForm(request.form, meta={'csrf': False})
   if form.validate():
     try:
-      artist.name = form.name.data,
-      artist.city = form.city.data,
-      artist.state = form.state.data,
-      artist.phone = form.phone.data,
-      artist.genres = json.dumps(form.genres.data),
-      artist.image_link = form.image_link.data,
-      artist.website_link = form.website_link.data,
-      artist.facebook_link = form.facebook_link.data,
-      artist.seeking_venue = json.dumps(form.seeking_venue.data),
+      artist.name = form.name.data
+      artist.city = form.city.data
+      artist.state = form.state.data
+      artist.phone = form.phone.data
+      artist.genres = form.genres.data
+      artist.image_link = form.image_link.data
+      artist.website_link = form.website_link.data
+      artist.facebook_link = form.facebook_link.data
+      artist.seeking_venue = form.seeking_venue.data
       artist.seeking_description = form.seeking_description.data
       db.session.add(artist)
       db.session.commit()
@@ -316,6 +308,7 @@ def edit_artist_submission(artist_id):
       db.session.rollback()
     finally:
       db.session.close()
+      print(sys.exc_info())
       
     flash('Artist ' + request.form['name'] + ' edit successfully!')
     return redirect(url_for('show_artist', artist_id=artist_id))
@@ -343,7 +336,7 @@ def create_artist_submission():
         city=form.city.data,
         state=form.state.data,
         phone=form.phone.data,
-        genres=json.dumps(form.genres.data),
+        genres=form.genres.data,
         image_link=form.image_link.data,
         website_link=form.website_link.data,
         facebook_link=form.facebook_link.data,
@@ -406,7 +399,12 @@ def create_show_submission():
         venue_id = form.venue_id.data,
         start_time = form.start_time.data
       )
-      check_show = Shows.query.filter(db.and_(Shows.artist_id == form['artist_id'].data, Shows.venue_id == form['venue_id'].data)).first()
+      
+      check_show = Shows.query.filter(db.and_(
+        Shows.artist_id == form['artist_id'].data, 
+        Shows.venue_id == form['venue_id'].data)
+      ).first()
+
       if check_show:
         flash(u'Show existed! Please try again', 'error')
         return render_template('forms/new_show.html', form=form)
@@ -415,6 +413,7 @@ def create_show_submission():
         db.session.commit()
         flash('Show successfully listed!')
         return render_template('pages/home.html')
+      
     except Exception as e:
         db.session.rollback()
         print(e)
