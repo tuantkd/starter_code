@@ -18,6 +18,7 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 from logging import Formatter, FileHandler
+from markupsafe import Markup
 from sqlalchemy.orm import joinedload
 from sqlalchemy import create_engine
 from forms import ArtistForm, ShowForm, VenueForm
@@ -402,11 +403,12 @@ def create_show_submission():
       
       check_show = Shows.query.filter(db.and_(
         Shows.artist_id == form['artist_id'].data, 
-        Shows.venue_id == form['venue_id'].data)
+        Shows.venue_id == form['venue_id'].data,
+        Shows.start_time == form['start_time'].data)
       ).first()
 
       if check_show:
-        flash(u'Show existed! Please try again', 'error')
+        flash('''Show existed! Please try again {}'''.form['start_time'].data, 'error')
         return render_template('forms/new_show.html', form=form)
       else:
         db.session.add(show)
@@ -425,8 +427,8 @@ def create_show_submission():
     message = []
     for field, errors in form.errors.items():
       for error in errors:
-        message.append(f"{field}: {error}")
-    flash('Please fix the following errors: ' + ', '.join(message))
+        message.append(f"<div>{field}: {error}</div>")
+    flash(Markup('Please fix the following errors: ' + ''.join(message)))
     form = ShowForm()
     return render_template('forms/new_show.html', form=form)
 #==============================================================

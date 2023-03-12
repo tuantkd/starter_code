@@ -16,7 +16,6 @@ class Venue(db.Model):
   website_link = db.Column(db.String(120), nullable=True)
   seeking_talent = db.Column(db.Boolean, default=False)
   seeking_description = db.Column(db.String(800), nullable=True)
-  num_upcoming_shows = db.Column(db.Integer, nullable=True)
   created_on = db.Column(db.DateTime, default=datetime.utcnow)
   shows = db.relationship('Shows', backref='venue', lazy='joined', cascade="all, delete")
 
