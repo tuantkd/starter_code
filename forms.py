@@ -95,7 +95,30 @@ def is_valid_phone(number):
 class ShowForm(Form):
     artist_id = StringField('artist_id')
     venue_id = StringField('venue_id')
-    start_time = DateTimeField('start_time',validators=[DataRequired()],default= datetime.today())
+    start_time = DateTimeField(
+        'start_time',
+        validators=[DataRequired()],
+        default= datetime.today(),
+        format='%Y-%m-%d %H:%M:%S'
+    )
+
+    def validate(self, **kwargs):
+        if not super().validate():
+            return False
+
+        existing_show = Shows.query.filter_by(
+            artist_id=self.artist_id.data,
+            venue_id=self.venue_id.data,
+            start_time=self.start_time.data
+        ).first()
+
+        if existing_show:
+            self.artist_id.errors.append('A show with the same artist_id, venue_id, and start_time already exists.')
+            self.venue_id.errors.append('A show with the same artist_id, venue_id, and start_time already exists.')
+            self.start_time.errors.append('A show with the same artist_id, venue_id, and start_time already exists.')
+            return False
+
+        return True
 
 
 class VenueForm(Form):
